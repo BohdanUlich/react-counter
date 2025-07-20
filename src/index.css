@@ -1,13 +1,55 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Prevent font flashing by ensuring font-display optional */
+@font-face {
+  font-family: "Manrope";
+  font-display: optional;
+  src: local("Manrope");
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer base {
+  :root {
+    /* Light theme */
+    --background: #ececec;
+    --primary: #202025;
+    --secondary: #c8c8d4;
+    --secondary-background: #d2d2da;
+    --border: #6f6f7c;
+    --radius: 3.75rem;
+  }
+
+  .dark {
+    /* Dark theme */
+    --background: #202025;
+    --primary: #ececec;
+    --secondary: #4c4c58;
+    --secondary-background: #3f3f4b;
+    --border: #6f6f7c;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-primary;
+  }
+}
+
+@layer components {
+  .bg-secondary-background {
+    background-color: var(--secondary-background);
+  }
+  .text-secondary {
+    color: var(--secondary);
+  }
+  .bg-secondary {
+    background-color: var(--secondary);
+  }
+  .border-border {
+    border-color: var(--border);
+  }
 }

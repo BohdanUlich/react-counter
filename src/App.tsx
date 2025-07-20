@@ -1,25 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider } from "./components/ThemeProvider";
+import ThemeToggle from "./components/ThemeToggle";
+import { Counter } from "./components/Counter";
+import { ThemeType } from "./types";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider defaultTheme={ThemeType.SYSTEM} storageKey="counter-theme">
+      <div className="relative min-h-screen">
+        <ThemeToggle />
+        <Counter />
+      </div>
+    </ThemeProvider>
   );
 }
 
